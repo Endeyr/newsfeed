@@ -1,35 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import getData from '.'
 
 type NewsPost = {
+	source: {
+		id: string
+		name: string
+	}
 	author: string
 	title: string
 	description: string
 	url: string
-	source: string
-	image: string
-	category: string
-	language: string
-	country: string
+	urlToImage: string
 	published_at: string
+	content: string
 }
 
 type Error = {
 	message: string
-}
-
-async function getData() {
-	const res = await fetch(
-		`http://api.mediastack.com/v1/news?access_key=${process.env.ACCESS_KEY}&limit=1&countries=us&languages=en`
-	)
-	if (!res.ok) {
-		console.log(res.status)
-		// This will activate the closest `error.js` Error Boundary
-		throw new Error('Failed to fetch data')
-	}
-
-	return res.json()
 }
 
 export default function Page() {
@@ -37,11 +26,16 @@ export default function Page() {
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)
 
+	const abortControllerRef = useRef<AbortController | null>(null)
+
 	useEffect(() => {
+		const controller = new AbortController()
+		abortControllerRef.current = controller
+		const signal = controller.signal
 		const fetchData = async () => {
 			try {
 				const data = await getData()
-				const posts: NewsPost[] = data.data
+				const posts: NewsPost[] = data.articles
 				if (posts.length > 0) {
 					setNewsPost(posts[0]) // Assuming you want to display the first post
 				} else {
@@ -55,6 +49,10 @@ export default function Page() {
 		}
 
 		fetchData()
+
+		return () => {
+			controller.abort()
+		}
 	}, [])
 
 	if (loading) return <div>Loading...</div>
@@ -65,7 +63,7 @@ export default function Page() {
 		<main>
 			<h2>News</h2>
 			<h2>{newsPost.title}</h2>
-			<p>{newsPost.description}</p>
+			<p>{newsPost.content}</p>
 			<p>{newsPost.published_at}</p>
 		</main>
 	)
