@@ -1,10 +1,6 @@
+import { url } from '@/api/index'
+
 export default async function getData() {
-	const endpoint = 'http://newsapi.org/v2/top-headlines?'
-	const query = 'biden'
-	const country = 'us'
-	const pageSize = '1'
-	const api_key = process.env.API_KEY
-	const url = `${endpoint}q=${query}&country=${country}&pageSize=${pageSize}&apiKey=${api_key}`
 	const res = await fetch(url)
 	if (!res.ok) {
 		console.log(res.status)
