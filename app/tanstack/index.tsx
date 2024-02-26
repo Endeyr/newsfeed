@@ -1,12 +1,12 @@
 'use client'
 
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export default function GetData() {
 	// Access the client
 	const queryClient = useQueryClient()
 
-	const endpoint = 'https://newsapi.org/v2/top-headlines?'
+	const endpoint = 'http://newsapi.org/v2/top-headlines?'
 	const query = 'biden'
 	const country = 'us'
 	const pageSize = '1'
