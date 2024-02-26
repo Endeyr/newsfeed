@@ -9,7 +9,7 @@ export default function GetData() {
 
 	// Queries
 	const { isPending, error, data } = useQuery({
-		queryKey: ['newsData'],
+		queryKey: ['postData'],
 		queryFn: () => fetch(url).then((res) => res.json()),
 	})
 
@@ -17,7 +17,7 @@ export default function GetData() {
 
 	if (error) return 'An error has occurred: ' + error.message
 
-	const article = data.articles[0]
+	const post = data[0]
 
 	// Mutations
 	// const mutation = useMutation({
@@ -30,10 +30,9 @@ export default function GetData() {
 
 	return (
 		<main>
-			<h2>News</h2>
-			<h2>{article.title}</h2>
-			<p>{article.content}</p>
-			<p>{article.published_at}</p>
+			<h2>Post</h2>
+			<p>{post.title}</p>
+			<p>{post.body}</p>
 		</main>
 	)
 }

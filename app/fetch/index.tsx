@@ -14,17 +14,15 @@ async function getPosts() {
 export default async function Posts() {
 	const data = await getPosts()
 
-	if (!data || !data.articles || data.articles.length === 0)
-		return <div>No Articles</div>
+	if (!data || data.length === 0) return <div>No Posts</div>
 
-	const article = data.articles[0]
+	const post = data[0]
 
 	return (
 		<main>
-			<h2>Articles</h2>
-			<h2>{article.title}</h2>
-			<p>{article.content}</p>
-			<p>{article.published_at}</p>
+			<h2>Post</h2>
+			<p>{post.title}</p>
+			<p>{post.body}</p>
 		</main>
 	)
 }

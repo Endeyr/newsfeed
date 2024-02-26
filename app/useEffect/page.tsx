@@ -3,18 +3,11 @@
 import { useEffect, useRef, useState } from 'react'
 import getData from '.'
 
-type NewsPost = {
-	source: {
-		id: string
-		name: string
-	}
-	author: string
+type PostType = {
+	userId: number
+	id: number
 	title: string
-	description: string
-	url: string
-	urlToImage: string
-	published_at: string
-	content: string
+	body: string
 }
 
 type Error = {
@@ -22,7 +15,7 @@ type Error = {
 }
 
 export default function Page() {
-	const [newsPost, setNewsPost] = useState<NewsPost | undefined>(undefined)
+	const [post, setPost] = useState<PostType | undefined>(undefined)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)
 
@@ -35,11 +28,11 @@ export default function Page() {
 		const fetchData = async () => {
 			try {
 				const data = await getData()
-				const posts: NewsPost[] = data.articles
+				const posts: PostType[] = data
 				if (posts.length > 0) {
-					setNewsPost(posts[0]) // Assuming you want to display the first post
+					setPost(posts[0]) // Assuming you want to display the first post
 				} else {
-					throw new Error('No news found')
+					throw new Error('No posts found')
 				}
 			} catch (error) {
 				setError(error as Error)
@@ -57,14 +50,13 @@ export default function Page() {
 
 	if (loading) return <div>Loading...</div>
 	if (error) return <div>Error: {error.message}</div>
-	if (!newsPost) return <div>No news found</div>
+	if (!post) return <div>No posts found</div>
 
 	return (
 		<main>
-			<h2>News</h2>
-			<h2>{newsPost.title}</h2>
-			<p>{newsPost.content}</p>
-			<p>{newsPost.published_at}</p>
+			<h2>Post</h2>
+			<p>{post.title}</p>
+			<p>{post.body}</p>
 		</main>
 	)
 }
