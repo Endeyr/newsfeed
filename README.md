@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# News API Data Fetching in Next.js
+
+This project demonstrates different approaches to fetching data from a news API in a Next.js application. It includes implementations using server-side data fetching, client-side data fetching with useEffect, and client-side data fetching with @tanstack/react-query.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Before running the project, you'll need:
+
+- Node.js installed on your machine
+- An API key for the news API you'll be using. For demonstration purposes, this project uses the News API.
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/news-api-nextjs.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd news-api-nextjs
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+### Usage
+
+1. Set your News API key as an environment variable. Create a .env.local file in the root directory of the project and add your API key:
+
+```env
+API_KEY=your-api-key
+```
+
+2. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open your browser and navigate to http://localhost:3000 to see the project in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Approaches
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Server-side Fetch
+   In this approach, data is fetched on the server and rendered directly in the HTML before sending it to the client.
 
-## Learn More
+Implementation:
 
-To learn more about Next.js, take a look at the following resources:
+Navigate to the /fetch/index.tsx file to see the implementation.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Client-side Fetch with useEffect
+   In this approach, data fetching is done on the client side using the useEffect hook.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Implementation:
 
-## Deploy on Vercel
+Navigate to the /useEffect/index.tsx file to see the implementation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Client-side Fetch with @tanstack/react-query
+   In this approach, data fetching is handled with @tanstack/react-query library, which provides powerful data fetching and caching capabilities.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Implementation:
+
+Navigate to the /tanstack/index.tsx file to see the implementation.
+
+### Additional Notes
+
+Each approach demonstrates a different trade-off in terms of performance, initial page load time, and data freshness.
+Choose the approach that best fits your application's requirements and constraints.
+
+### Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+### License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
