@@ -42,6 +42,7 @@ next-env.d.ts
 !.vscode/launch.json
 !.vscode/extensions.json
 .vscode/symbols.json
+settings.json
 
 # nextjs
 .next
