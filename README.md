@@ -1,6 +1,6 @@
 # News API Data Fetching in Next.js
 
-This project demonstrates different approaches to fetching data from a news API in a Next.js application. It includes implementations using server-side data fetching, client-side data fetching with useEffect, and client-side data fetching with @tanstack/react-query. Visit the current [site](https://newsfeed-endeyr.vercel.app/).
+This project demonstrates different approaches to fetching data from a news API in a Next.js application. It includes implementations using server-side data fetching, client-side data fetching with useEffect, and client-side data fetching with @tanstack/react-query. Uses tailwindcss and shadcn for UI. Visit the current [site](https://newsfeed-endeyr.vercel.app/).
 
 ## Getting Started
 
