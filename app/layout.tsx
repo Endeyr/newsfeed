@@ -33,8 +33,9 @@ export default function RootLayout({
 				>
 					<div className="flex justify-end items-center space-x-2">
 						<Link href={'/'}>Home</Link>
-						<Link href={'/news'}>News</Link>
-						<Link href={'/posts'}>Articles</Link>
+						<Link href={'/useEffect'}>useEffect</Link>
+						<Link href={'/fetch'}>NextJs</Link>
+						<Link href={'/tanstack'}>Tanstack</Link>
 					</div>
 					{children}
 				</ThemeProvider>

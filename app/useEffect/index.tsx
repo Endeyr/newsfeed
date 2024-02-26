@@ -1,6 +1,6 @@
 export default async function getData() {
 	const endpoint = 'http://newsapi.org/v2/top-headlines?'
-	const query = ''
+	const query = 'biden'
 	const country = 'us'
 	const pageSize = '1'
 	const api_key = process.env.API_KEY
