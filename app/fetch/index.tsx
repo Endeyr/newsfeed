@@ -1,6 +1,6 @@
 async function getPosts() {
 	const api_key = process.env.API_KEY
-	const url = `http://newsapi.org/v2/top-headlines?q=biden&pageSize=1&country=us&apiKey=${api_key}`
+	const url = `https://newsapi.org/v2/top-headlines?q=biden&pageSize=1&country=us&apiKey=${api_key}`
 	const response = await fetch(url)
 
 	if (!response.ok) {

@@ -6,7 +6,7 @@ export default function GetData() {
 	// Access the client
 	const queryClient = useQueryClient()
 
-	const endpoint = 'http://newsapi.org/v2/top-headlines?'
+	const endpoint = 'https://newsapi.org/v2/top-headlines?'
 	const query = 'biden'
 	const country = 'us'
 	const pageSize = '1'
