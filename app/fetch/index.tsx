@@ -1,4 +1,5 @@
 import { url } from '@/api/index'
+import Posts from '../components/posts'
 
 async function getPosts() {
 	const response = await fetch(url)
@@ -11,18 +12,9 @@ async function getPosts() {
 	return response.json()
 }
 
-export default async function Posts() {
+export default async function DisplayPosts() {
 	const data = await getPosts()
-
 	if (!data || data.length === 0) return <div>No Posts</div>
 
-	const post = data[0]
-
-	return (
-		<main>
-			<h2>Post</h2>
-			<p>{post.title}</p>
-			<p>{post.body}</p>
-		</main>
-	)
+	return <Posts data={data} />
 }

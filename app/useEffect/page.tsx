@@ -1,21 +1,12 @@
 'use client'
 
+import { Error, PostType } from '@/lib/types'
 import { useEffect, useRef, useState } from 'react'
 import getData from '.'
-
-type PostType = {
-	userId: number
-	id: number
-	title: string
-	body: string
-}
-
-type Error = {
-	message: string
-}
+import Posts from '../components/posts'
 
 export default function Page() {
-	const [post, setPost] = useState<PostType | undefined>(undefined)
+	const [data, setData] = useState<PostType[] | undefined>(undefined)
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState<Error | null>(null)
 
@@ -28,12 +19,7 @@ export default function Page() {
 		const fetchData = async () => {
 			try {
 				const data = await getData()
-				const posts: PostType[] = data
-				if (posts.length > 0) {
-					setPost(posts[0]) // Assuming you want to display the first post
-				} else {
-					throw new Error('No posts found')
-				}
+				setData(data)
 			} catch (error) {
 				setError(error as Error)
 			} finally {
@@ -46,17 +32,11 @@ export default function Page() {
 		return () => {
 			controller.abort()
 		}
-	}, [])
+	}, [data])
 
 	if (loading) return <div>Loading...</div>
 	if (error) return <div>Error: {error.message}</div>
-	if (!post) return <div>No posts found</div>
+	if (!data) return <div>No posts found</div>
 
-	return (
-		<main>
-			<h2>Post</h2>
-			<p>{post.title}</p>
-			<p>{post.body}</p>
-		</main>
-	)
+	return <Posts data={data} />
 }

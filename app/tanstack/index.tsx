@@ -2,6 +2,7 @@
 
 import { url } from '@/api/index'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import Posts from '../components/posts'
 
 export default function GetData() {
 	// Access the client
@@ -17,8 +18,6 @@ export default function GetData() {
 
 	if (error) return 'An error has occurred: ' + error.message
 
-	const post = data[0]
-
 	// Mutations
 	// const mutation = useMutation({
 	// 	mutationFn: mutations function,
@@ -28,11 +27,5 @@ export default function GetData() {
 	// 	},
 	// })
 
-	return (
-		<main>
-			<h2>Post</h2>
-			<p>{post.title}</p>
-			<p>{post.body}</p>
-		</main>
-	)
+	return <Posts data={data} />
 }
