@@ -2,7 +2,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
+import Navbar from './components/nav'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
@@ -32,12 +32,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<div className="flex justify-end items-center space-x-2">
-						<Link href={'/'}>Home</Link>
-						<Link href={'/useEffect'}>useEffect</Link>
-						<Link href={'/fetch'}>NextJs</Link>
-						<Link href={'/tanstack'}>Tanstack</Link>
-					</div>
+					<Navbar />
 					{children}
 				</ThemeProvider>
 			</body>
