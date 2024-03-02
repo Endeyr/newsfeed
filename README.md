@@ -1,6 +1,12 @@
-# News API Data Fetching in Next.js
+# API Data Fetching in Next.js
 
-This project demonstrates different approaches to fetching data from a news API in a Next.js application. It includes implementations using server-side data fetching, client-side data fetching with useEffect, and client-side data fetching with @tanstack/react-query. Uses tailwindcss and shadcn for UI. Visit the current [site](https://newsfeed-endeyr.vercel.app/).
+This project demonstrates different approaches to fetching data from an [API](https://jsonplaceholder.typicode.com/) in a Next.js application. It includes implementations using server-side data fetching, client-side data fetching with useEffect, and client-side data fetching with @tanstack/react-query. Uses tailwindcss and shadcn for UI. Visit the current [site](https://newsfeed-endeyr.vercel.app/).
+
+## TODO
+
+- add pagination
+- add homepage
+- update styling
 
 ## Getting Started
 
@@ -9,7 +15,6 @@ This project demonstrates different approaches to fetching data from a news API 
 Before running the project, you'll need:
 
 - Node.js installed on your machine
-- An API key for the news API you'll be using. For demonstration purposes, this project uses the News API.
 
 ### Installation
 
@@ -33,10 +38,10 @@ npm install
 
 ### Usage
 
-1. Set your News API key as an environment variable. Create a .env.local file in the root directory of the project and add your API key:
+1. Setup the dev environment:
 
-```env
-API_KEY=your-api-key
+```bash
+npm install
 ```
 
 2. Run the development server:
